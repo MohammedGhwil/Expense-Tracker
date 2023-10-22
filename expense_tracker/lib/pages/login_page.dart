@@ -14,11 +14,11 @@ class Login extends StatelessWidget {
         child: Scaffold(
             backgroundColor: Colors.transparent,
             body: SafeArea(
+                child: Center(
               child: Column(children: [
                 //icon
-                Align(
-                    alignment: const Alignment(0, -0.30),
-                    child: Image.asset('lib/icons/login-xxl.png', height: 50))
+                const SizedBox(height: 120),
+                Image.asset('lib/icons/login-xxl.png', height: 50)
 
                 //username
 
@@ -26,6 +26,6 @@ class Login extends StatelessWidget {
 
                 //log in
               ]),
-            )));
+            ))));
   }
 }
