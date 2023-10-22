@@ -18,10 +18,7 @@ class Login extends StatelessWidget {
                 //icon
                 Align(
                     alignment: const Alignment(0, -0.30),
-                    child: Image.asset(
-                      'lib/icons/login-xxl.png',
-                      width: 50,
-                    ))
+                    child: Image.asset('lib/icons/login-xxl.png', height: 50))
 
                 //username
 
