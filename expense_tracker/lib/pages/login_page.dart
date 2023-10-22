@@ -16,7 +16,13 @@ class Login extends StatelessWidget {
             body: SafeArea(
               child: Column(children: [
                 //icon
-                Image.asset('lib/icons/login-xxl.png', height: 70),
+                Align(
+                    alignment: const Alignment(0, -0.30),
+                    child: Image.asset(
+                      'lib/icons/login-xxl.png',
+                      width: 50,
+                    ))
+
                 //username
 
                 //password
