@@ -18,10 +18,18 @@ class Login extends StatelessWidget {
               child: Column(children: [
                 //icon
                 const SizedBox(height: 120),
-                Image.asset('lib/icons/login-xxl.png', height: 50)
-
+                Image.asset('lib/icons/login-xxl.png', height: 50),
+                const SizedBox(height: 50),
                 //username
-
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 25.0),
+                  child: TextField(
+                      decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white)),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white)))),
+                )
                 //password
 
                 //log in
