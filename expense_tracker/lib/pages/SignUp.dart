@@ -3,22 +3,21 @@ import 'package:expense_tracker/Util/textinput.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class Login extends StatefulWidget {
+class Signup extends StatefulWidget {
   final Function()? onTap;
-  const Login({super.key, required this.onTap});
+  const Signup({super.key, required this.onTap});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Signup> createState() => _SignupState();
 }
 
-class _LoginState extends State<Login> {
+class _SignupState extends State<Signup> {
   final usernameController = TextEditingController();
-
   final passwordcontroller = TextEditingController();
+  final confrimpasswordcontroller = TextEditingController();
+  //signing User up method
 
-  //signing User In method
-
-  void signInUser() async {
+  void signupUser() async {
     showDialog(
         context: context,
         builder: (context) {
@@ -28,9 +27,13 @@ class _LoginState extends State<Login> {
                     const Color.fromARGB(255, 255, 255, 255))),
           );
         });
-
+    if (passwordcontroller.text != confrimpasswordcontroller.text) {
+      Navigator.pop(context);
+      ErrorMessage("Passwords Do Not Match");
+      return;
+    }
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: usernameController.text, password: passwordcontroller.text);
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
@@ -85,19 +88,26 @@ class _LoginState extends State<Login> {
                     hintText: 'Enter Your Password',
                     concealText: true,
                   ),
+                  //password confirmation
+                  const SizedBox(height: 30),
+                  textinput(
+                    controller: confrimpasswordcontroller,
+                    hintText: 'Confirm Your Password',
+                    concealText: true,
+                  ),
                   //sign in
                   const SizedBox(height: 30),
-                  GenButton(onTap: signInUser, description: "Sign In"),
+                  GenButton(onTap: signupUser, description: "Sign Up"),
 
                   //sign up
-                  const SizedBox(height: 260),
+                  const SizedBox(height: 190),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("New Member? "),
+                      Text("Already a Member? "),
                       GestureDetector(
                         onTap: widget.onTap,
-                        child: Text("Sign Up",
+                        child: Text("Log In",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold)),
