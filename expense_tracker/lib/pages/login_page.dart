@@ -3,6 +3,8 @@ import 'package:expense_tracker/Util/textinput.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import 'ForgotPassword.dart';
+
 class Login extends StatefulWidget {
   final Function()? onTap;
   const Login({super.key, required this.onTap});
@@ -84,6 +86,27 @@ class _LoginState extends State<Login> {
                     controller: passwordcontroller,
                     hintText: 'Enter Your Password',
                     concealText: true,
+                  ),
+                  const SizedBox(height: 10),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return ForgotPassword();
+                            }));
+                          },
+                          child: Text("Forgot Password?",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                      ],
+                    ),
                   ),
                   //sign in
                   const SizedBox(height: 30),
