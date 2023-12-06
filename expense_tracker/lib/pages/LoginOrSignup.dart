@@ -1,5 +1,5 @@
-import 'package:expense_tracker/pages/SignUp.dart';
-import 'package:expense_tracker/pages/login_page.dart';
+import 'package:expense_tracker/pages/View/LoginPageView.dart';
+import 'package:expense_tracker/pages/View/SignupView.dart';
 import 'package:flutter/material.dart';
 
 class LoginOrSignUp extends StatefulWidget {
@@ -21,11 +21,11 @@ class _LoginOrSignUpState extends State<LoginOrSignUp> {
   @override
   Widget build(BuildContext context) {
     if (displayLogin) {
-      return Login(
+      return LoginView(
         onTap: toggleSignUp,
       );
     } else {
-      return Signup(
+      return SignupView(
         onTap: toggleSignUp,
       );
     }

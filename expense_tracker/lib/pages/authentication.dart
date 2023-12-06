@@ -1,6 +1,5 @@
-import 'package:expense_tracker/pages/HomeScreen.dart';
 import 'package:expense_tracker/pages/LoginOrSignup.dart';
-import 'package:expense_tracker/pages/login_page.dart';
+import 'package:expense_tracker/pages/View/HomescreenView.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +13,7 @@ class Authentication extends StatelessWidget {
             stream: FirebaseAuth.instance.authStateChanges(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return Homescreen();
+                return HomescreenView();
               } else {
                 return LoginOrSignUp();
               }
