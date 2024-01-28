@@ -35,6 +35,7 @@ class _HomescreenViewState extends State<HomescreenView> {
             BottomNavigationBarItem(icon: Icon(Icons.wallet), label: 'Wallet')
           ]),
       appBar: AppBar(
+        elevation: 0,
         title: Text("Welcome"),
         backgroundColor: Colors.green,
         actions: [
