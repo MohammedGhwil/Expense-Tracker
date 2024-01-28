@@ -1,12 +1,37 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expense_tracker/pages/Controller/HomescreenController.dart';
+import 'package:expense_tracker/pages/Dashboard.dart';
+import 'package:expense_tracker/pages/Wallet.dart';
 import 'package:flutter/material.dart';
 
-class HomescreenView extends StatelessWidget {
+class HomescreenView extends StatefulWidget {
   const HomescreenView({Key? key}) : super(key: key);
 
   @override
+  State<HomescreenView> createState() => _HomescreenViewState();
+}
+
+class _HomescreenViewState extends State<HomescreenView> {
+  int myindex = 0;
+  List<Widget> widgetlist = [const Dashboard(), const MyWallet()];
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: IndexedStack(
+        children: widgetlist,
+        index: myindex,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+          onTap: (index) {
+            setState(() {
+              myindex = index;
+            });
+          },
+          currentIndex: myindex,
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(icon: Icon(Icons.wallet), label: 'Wallet')
+          ]),
       appBar: AppBar(
         actions: [
           IconButton(
@@ -17,7 +42,6 @@ class HomescreenView extends StatelessWidget {
           )
         ],
       ),
-      body: Center(child: Text("LOGGED IN")),
     );
   }
 }
