@@ -22,6 +22,8 @@ class _HomescreenViewState extends State<HomescreenView> {
         index: myindex,
       ),
       bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.green,
+          selectedItemColor: Colors.white,
           onTap: (index) {
             setState(() {
               myindex = index;
@@ -33,6 +35,8 @@ class _HomescreenViewState extends State<HomescreenView> {
             BottomNavigationBarItem(icon: Icon(Icons.wallet), label: 'Wallet')
           ]),
       appBar: AppBar(
+        title: Text("Welcome"),
+        backgroundColor: Colors.green,
         actions: [
           IconButton(
             onPressed: () {
