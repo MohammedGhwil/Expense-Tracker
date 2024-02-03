@@ -1,3 +1,4 @@
+import 'package:expense_tracker/Util/TransactionsList.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatelessWidget {
@@ -8,10 +9,13 @@ class Dashboard extends StatelessWidget {
     return Scaffold(
       body: Container(
         width: double.infinity,
-        color: Colors.green,
         child: Column(
           children: [
             NameCard(),
+            SizedBox(
+              height: 20,
+            ),
+            TransactionList(),
           ],
         ),
       ),
@@ -26,51 +30,55 @@ class NameCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(15),
-          child: const Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Current Balance",
-                style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w800),
-              ),
-              Text(
-                "E£300.00",
-                style: TextStyle(
-                    fontSize: 40,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w800),
-              ),
-            ],
+    return Container(
+      color: Colors.green,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(15),
+            child: const Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Current Balance",
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800),
+                ),
+                Text(
+                  "E£300.00",
+                  style: TextStyle(
+                      fontSize: 40,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800),
+                ),
+              ],
+            ),
           ),
-        ),
-        Container(
-          padding: EdgeInsets.only(top: 30, bottom: 10, left: 10, right: 10),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30), topRight: Radius.circular(30)),
-              color: Colors.white),
-          child: Row(
-            children: [
-              WalletOne(
-                color: Colors.blue.shade900,
-              ),
-              SizedBox(
-                width: 15,
-              ),
-              WalletOne(
-                color: Colors.red,
-              )
-            ],
-          ),
-        )
-      ],
+          Container(
+            padding: EdgeInsets.only(top: 30, bottom: 10, left: 10, right: 10),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30)),
+                color: Colors.white),
+            child: Row(
+              children: [
+                WalletOne(
+                  color: Colors.blue.shade900,
+                ),
+                SizedBox(
+                  width: 15,
+                ),
+                WalletOne(
+                  color: Colors.red,
+                )
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }

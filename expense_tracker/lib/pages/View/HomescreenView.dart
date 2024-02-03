@@ -17,6 +17,10 @@ class _HomescreenViewState extends State<HomescreenView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: (() {}),
+        child: Icon(Icons.add),
+      ),
       body: IndexedStack(
         children: widgetlist,
         index: myindex,
