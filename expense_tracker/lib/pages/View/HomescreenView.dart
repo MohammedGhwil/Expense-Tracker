@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:expense_tracker/pages/Controller/HomescreenController.dart';
+import 'package:expense_tracker/Util/AddTransaction.dart';
 import 'package:expense_tracker/pages/Dashboard.dart';
+import 'package:expense_tracker/pages/LogInPage.dart';
 import 'package:expense_tracker/pages/Wallet.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class HomescreenView extends StatefulWidget {
@@ -12,13 +14,37 @@ class HomescreenView extends StatefulWidget {
 }
 
 class _HomescreenViewState extends State<HomescreenView> {
+  var islogoutloading = false;
+
+  loguserout() async {
+    setState(() {
+      islogoutloading = true;
+    });
+    await FirebaseAuth.instance.signOut();
+    Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (context) => LoginPage()));
+  }
+
+  _dialogBuilder(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: AddTransactions(),
+          );
+        });
+  }
+
   int myindex = 0;
-  List<Widget> widgetlist = [const Dashboard(), const MyWallet()];
+  List<Widget> widgetlist = [Dashboard(), const MyWallet()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: (() {}),
+        onPressed: (() {
+          _dialogBuilder(context);
+        }),
+        backgroundColor: Colors.green,
         child: Icon(Icons.add),
       ),
       body: IndexedStack(
@@ -45,7 +71,7 @@ class _HomescreenViewState extends State<HomescreenView> {
         actions: [
           IconButton(
             onPressed: () {
-              HomescreenController().signout();
+              loguserout();
             },
             icon: Icon(Icons.logout_rounded),
           )

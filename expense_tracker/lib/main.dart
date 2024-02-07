@@ -1,4 +1,6 @@
-import 'package:expense_tracker/pages/authentication.dart';
+import 'package:expense_tracker/Util/AuthenticationGate.dart';
+import 'package:expense_tracker/pages/SignUpPage.dart';
+import 'package:expense_tracker/Pages/authentication.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
             child: child!);
       },
       debugShowCheckedModeBanner: false,
-      home: Authentication(),
+      home: AuthGate(),
     );
   }
 }
