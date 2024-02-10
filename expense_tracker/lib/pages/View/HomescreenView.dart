@@ -54,12 +54,19 @@ class _HomescreenViewState extends State<HomescreenView> {
             ));
   }
 
+  void deleteexpense(ExpenseItem expense) {
+    Provider.of<ExpensesData>(context, listen: false).deleteExpense(expense);
+  }
+
   void save() {
-    ExpenseItem newexpnese = ExpenseItem(
-        name: newexpenseCategorycontroller.text,
-        amount: newexpenseAmountcontroller.text,
-        dateAdded: DateTime.now());
-    Provider.of<ExpensesData>(context, listen: false).addExpense(newexpnese);
+    if (newexpenseAmountcontroller.text.isNotEmpty &&
+        newexpenseCategorycontroller.text.isNotEmpty) {
+      ExpenseItem newexpnese = ExpenseItem(
+          name: newexpenseCategorycontroller.text,
+          amount: newexpenseAmountcontroller.text,
+          dateAdded: DateTime.now());
+      Provider.of<ExpensesData>(context, listen: false).addExpense(newexpnese);
+    }
     Navigator.pop(context);
     clear();
   }
@@ -106,9 +113,12 @@ class _HomescreenViewState extends State<HomescreenView> {
                 physics: NeverScrollableScrollPhysics(),
                 itemCount: value.AllExpenseslist().length,
                 itemBuilder: (context, index) => ExpenseTiles(
-                    name: value.AllExpenseslist()[index].name,
-                    amount: value.AllExpenseslist()[index].amount,
-                    dateTime: value.AllExpenseslist()[index].dateAdded),
+                  name: value.AllExpenseslist()[index].name,
+                  amount: value.AllExpenseslist()[index].amount,
+                  dateTime: value.AllExpenseslist()[index].dateAdded,
+                  deleteTapped: (p0) =>
+                      deleteexpense(value.AllExpenseslist()[index]),
+                ),
               )
             ],
           )),
