@@ -16,6 +16,13 @@ class HomescreenView extends StatefulWidget {
 class _HomescreenViewState extends State<HomescreenView> {
   final newexpenseCategorycontroller = TextEditingController();
   final newexpenseAmountcontroller = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<ExpensesData>(context, listen: false).preparedata();
+  }
+
   void AddNewExpense() {
     showDialog(
         context: context,

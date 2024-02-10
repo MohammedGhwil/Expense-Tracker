@@ -1,3 +1,4 @@
+import 'package:expense_tracker/Hive_Database.dart';
 import 'package:expense_tracker/pages/Date_Time_Helper/DateTimeHelper.dart';
 import 'package:expense_tracker/pages/Model/Expenses.dart';
 import 'package:flutter/widgets.dart';
@@ -9,14 +10,23 @@ class ExpensesData extends ChangeNotifier {
     return overallExpenseslist;
   }
 
+  final db = hiveDataBase();
+  void preparedata() {
+    if (db.readdata().isNotEmpty) {
+      overallExpenseslist = db.readdata();
+    }
+  }
+
   void addExpense(ExpenseItem NewExpense) {
     overallExpenseslist.add(NewExpense);
     notifyListeners();
+    db.savedata(overallExpenseslist);
   }
 
   void deleteExpense(ExpenseItem expense) {
     overallExpenseslist.remove(expense);
     notifyListeners();
+    db.savedata(overallExpenseslist);
   }
 
   String RetrieveDay(DateTime dateTime) {
