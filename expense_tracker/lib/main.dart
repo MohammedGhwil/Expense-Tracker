@@ -1,12 +1,12 @@
 import 'package:expense_tracker/Util/AuthenticationGate.dart';
-import 'package:expense_tracker/pages/SignUpPage.dart';
+import 'package:expense_tracker/pages/View/SignUpPage.dart';
 import 'package:expense_tracker/Pages/authentication.dart';
-import 'package:expense_tracker/pages/expensesdata.dart';
+import 'package:expense_tracker/pages/Controller/expensesdata.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
-import 'firebase_options.dart';
+import 'pages/Controller/firebase_options.dart';
 
 void main() async {
   await Hive.initFlutter();

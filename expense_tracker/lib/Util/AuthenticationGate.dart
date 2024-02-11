@@ -1,4 +1,4 @@
-import 'package:expense_tracker/pages/LogInPage.dart';
+import 'package:expense_tracker/pages/View/LogInPage.dart';
 import 'package:expense_tracker/pages/View/HomescreenView.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
