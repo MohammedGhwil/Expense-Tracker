@@ -1,5 +1,5 @@
-import 'package:expense_tracker/Hive_Database.dart';
-import 'package:expense_tracker/pages/Date_Time_Helper/DateTimeHelper.dart';
+import 'package:expense_tracker/pages/Controller/Hive_Database.dart';
+import 'package:expense_tracker/pages/Model/DateTimeHelper.dart';
 import 'package:expense_tracker/pages/Model/Expenses.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
@@ -58,7 +58,6 @@ class ExpensesData extends ChangeNotifier {
         startofweek = today.subtract(Duration(days: i));
       }
     }
-    ;
     return startofweek!;
   }
 

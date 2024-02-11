@@ -1,6 +1,7 @@
 import 'package:expense_tracker/Util/ExpenseTile.dart';
 import 'package:expense_tracker/pages/ExpenseChart.dart';
 import 'package:expense_tracker/pages/Model/Expenses.dart';
+import 'package:expense_tracker/pages/SignUpPage.dart';
 import 'package:expense_tracker/pages/expensesdata.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -99,7 +100,13 @@ class _HomescreenViewState extends State<HomescreenView> {
               actions: [
                 IconButton(
                   onPressed: () {
-                    FirebaseAuth.instance.signOut();
+                    FirebaseAuth auth = FirebaseAuth.instance;
+                    auth.signOut().then((res) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => MyForm()),
+                      );
+                    });
                   },
                   icon: Icon(Icons.logout_rounded),
                 ),
